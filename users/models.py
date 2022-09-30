@@ -50,7 +50,6 @@ class Sponsor(models.Model):
     company_name = models.CharField(max_length=150, null=True, blank=True)
 
     create_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
     status = models.CharField(
         max_length=50,
         choices=SPONSOR_STATUS_CHOICES,
@@ -84,6 +83,7 @@ class Student(models.Model):
     )
     tuition_fee = models.DecimalField(max_digits=20, decimal_places=2, default=0)
 
+    create_at = models.DateTimeField(auto_now_add=True)
     received_money = models.DecimalField(max_digits=20, decimal_places=2, default=0)
 
     def __str__(self):
