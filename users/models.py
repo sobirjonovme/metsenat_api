@@ -33,6 +33,15 @@ STUDENT_TYPE_CHOICES = [
     (MAGISTR, 'magistr'),
 ]
 
+# PAYMENT TYPE CHOICES
+TRANSFER = "pul o'tkazma"
+CASH = 'naqd'
+
+PAYMENT_TYPE_CHOICES = [
+    (TRANSFER, "pul o'tkazma"),
+    (CASH, 'naqd'),
+]
+
 
 class CustomUser(AbstractUser):
     pass
@@ -56,6 +65,11 @@ class Sponsor(models.Model):
         default=NEW
     )
     spent_money = models.DecimalField(max_digits=20, decimal_places=2, default=0)
+    payment_type = models.CharField(
+        max_length=20,
+        choices=PAYMENT_TYPE_CHOICES,
+        default=TRANSFER
+    )
 
     def __str__(self):
         return self.full_name
