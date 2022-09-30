@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # installed apps
+    'rest_framework',
+
+    # local apps
+    'users.apps.UsersConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -105,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
@@ -121,3 +128,32 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+'''
+********************************************************************
+                            Added settings
+******************************************************************
+'''
+
+# Django'ga o'zimiz yaratgan CustomUser modelidan foydalanishini aytamiz
+AUTH_USER_MODEL = 'users.CustomUser'
+
+
+
+
+
+
+
+
+# # Media fayllarni qayerga saqlashni ko'rsatamiz
+# MEDIA_ROOT = BASE_DIR / 'media-files'
+#
+# MEDIA_URL = '/media/'
+#
+# # Asosiy rootdagi static papkasini kiritib qo'yamiz
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static',
+# ]
+# STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
