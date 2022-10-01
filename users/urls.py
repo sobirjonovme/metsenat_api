@@ -4,7 +4,10 @@ from .views import (
     SponsorListAPIView,
     RegisterSponsorAPIView,
     SponsorDetailAPIView,
+
     UniversityListAPIView,
+
+    CreateStudentAPIView,
     StudentListAPIView,
     StudentDetailAPIView,
 )
@@ -19,6 +22,7 @@ urlpatterns = [
 
     path('universities/', UniversityListAPIView.as_view(), name='university-list'),
 
+    path('students/create', CreateStudentAPIView.as_view(), name='student-create'),
     path('students/', StudentListAPIView.as_view(), name='student-list'),
     path('students/<int:pk>/', StudentDetailAPIView.as_view(), name='student-detail'),
 

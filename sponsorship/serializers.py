@@ -1,19 +1,13 @@
 from rest_framework import serializers
 
 from .models import SponsorStudent
-from users.serializers import SponsorSerializer, StudentSerializer
+from users.serializers import SponsorSerializer, StudentDetailSerializer
 
 
-class SponsorStudentSerializer(serializers.ModelSerializer):
-    sponsor = SponsorSerializer(read_only=True)
-    student = StudentSerializer(read_only=True)
-
-    sponsor_id = serializers.IntegerField(write_only=True)
-    student_id = serializers.IntegerField(write_only=True)
-
+class CreateSponsorStudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = SponsorStudent
-        fields = ('id', 'sponsor', 'student', 'sponsor_id', 'student_id', 'amount')
+        fields = ('sponsor', 'student', 'amount')
 
     def validate(self, data):
         if data['amount'] > (data['sponsor'].total_money - data['sponsor'].spent_money):
@@ -25,3 +19,12 @@ class SponsorStudentSerializer(serializers.ModelSerializer):
                 {'amount': 'Talabaga keragidan ortiq summa kiritildi'}
             )
         return data
+
+
+class SponsorStudentDetailSerializer(serializers.ModelSerializer):
+    sponsor = SponsorSerializer()
+    student = StudentDetailSerializer()
+
+    class Meta:
+        model = SponsorStudent
+        fields = ('id', 'sponsor', 'student', 'amount')

@@ -4,6 +4,7 @@ from .models import Sponsor, University, Student
 from sponsorship.models import SponsorStudent
 
 
+# SPONSOR SERIALIZERS
 class RegisterSponsorSerializer(serializers.ModelSerializer):
     # for non auth users
     class Meta:
@@ -21,27 +22,34 @@ class SponsorSerializer(serializers.ModelSerializer):
         read_only_fields = ['create_at', 'spent_money']
 
 
+# UNIVERSITY SERIALIZER
 class UniversitySerializer(serializers.ModelSerializer):
     class Meta:
         model = University
         fields = ('id', 'name')
 
 
-class StudentSerializer(serializers.ModelSerializer):
-    # for reading
-    university = UniversitySerializer(read_only=True)
-    sponsorships_recieved = serializers.PrimaryKeyRelatedField(
-        many=True,
-        read_only=True
-    )
+# STUDENT SERIALIZERS
+class CreateStudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Student
+        fields = ('full_name', 'phone_number', 'university', 'student_type', 'tuition_fee')
 
-    # for creating
-    university_id = serializers.IntegerField(write_only=True)
+
+class DetailStudentSponsorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SponsorStudent
+        fields = ('id', 'sponsor', 'amount')
+
+
+class StudentDetailSerializer(serializers.ModelSerializer):
+
+    university = UniversitySerializer()
+    sponsorships_recieved = DetailStudentSponsorSerializer(many=True, read_only=True)
 
     class Meta:
         model = Student
-        fields = ('id', 'full_name', 'phone_number', 'university', 'university_id', 'student_type',
+        fields = ('id', 'full_name', 'phone_number', 'university', 'student_type',
                   'tuition_fee', 'create_at', 'received_money', 'sponsorships_recieved')
 
         read_only_fields = ('received_money', 'create_at')
-

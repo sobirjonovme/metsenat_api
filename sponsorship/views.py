@@ -1,20 +1,29 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework import permissions
 
 from .models import SponsorStudent
-from .serializers import SponsorStudentSerializer
+from .serializers import SponsorStudentDetailSerializer, CreateSponsorStudentSerializer
 
 
 # Create your views here.
-class SponsorStudentListAPIView(ListCreateAPIView):
+# SponsorStudent create
+class CreateSponsorStudentAPIView(CreateAPIView):
     queryset = SponsorStudent.objects.all()
-    serializer_class = SponsorStudentSerializer
+    serializer_class = CreateSponsorStudentSerializer
 
     permission_classes = [permissions.IsAuthenticated]
 
 
-class SponsorStudentDetailAPIView(RetrieveUpdateDestroyAPIView):
+# SponsorStudent detail, update, delete
+class SponsorStudentAPIView(RetrieveUpdateDestroyAPIView):
     queryset = SponsorStudent.objects.all()
-    serializer_class = SponsorStudentSerializer
+    serializer_class = CreateSponsorStudentSerializer
+
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class SponsorStudentListAPIView(ListAPIView):
+    queryset = SponsorStudent.objects.all()
+    serializer_class = SponsorStudentDetailSerializer
 
     permission_classes = [permissions.IsAuthenticated]
