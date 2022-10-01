@@ -8,6 +8,7 @@ from rest_framework.generics import (
     ListCreateAPIView,
 )
 from rest_framework import permissions
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .serializers import (
     RegisterSponsorSerializer,
@@ -17,6 +18,8 @@ from .serializers import (
     StudentDetailSerializer,
 )
 from .models import Sponsor, University, Student
+
+from utils.pagination import CustomPagination
 
 
 # Create your views here.
@@ -34,6 +37,9 @@ class SponsorListAPIView(ListAPIView):
     serializer_class = SponsorSerializer
 
     permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['status', 'total_money', 'create_at']
+    pagination_class = CustomPagination
 
 
 # Sponsor detail, update, delete
@@ -50,6 +56,7 @@ class UniversityListAPIView(ListCreateAPIView):
     serializer_class = UniversitySerializer
 
     permission_classes = [permissions.IsAuthenticated]
+    pagination_class = CustomPagination
 
 
 # STUDENT API VIEWS
@@ -67,6 +74,9 @@ class StudentListAPIView(ListAPIView):
     serializer_class = StudentDetailSerializer
 
     permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['student_type', 'university']
+    pagination_class = CustomPagination
 
 
 # Student detail, delete

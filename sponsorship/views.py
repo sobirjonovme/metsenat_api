@@ -2,6 +2,7 @@ from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDe
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
+from django_filters.rest_framework import DjangoFilterBackend
 
 from django.db import models
 
@@ -13,6 +14,7 @@ from .serializers import (
     DashboardSponsorSerializer,
     DashboardStudentSerializer,
 )
+from utils.pagination import CustomPagination
 
 
 # Create your views here.
@@ -35,10 +37,13 @@ class SponsorStudentAPIView(RetrieveUpdateDestroyAPIView):
 
 # SponsorStudent list
 class SponsorStudentListAPIView(ListAPIView):
-    queryset = SponsorStudent.objects.all()
+    queryset = SponsorStudent.objects.all().order_by('-id')
     serializer_class = SponsorStudentDetailSerializer
 
     permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['amount']
+    pagination_class = CustomPagination
 
 
 # DASHBOARD VIEWS
@@ -60,7 +65,7 @@ class OverallStatistics(APIView):
 
 # Dashboard Student Statistics
 class SponsorStatistics(ListAPIView):
-    queryset = Student.objects.all()
+    queryset = Sponsor.objects.all()
     serializer_class = DashboardSponsorSerializer
 
     permission_classes = [permissions.IsAuthenticated]

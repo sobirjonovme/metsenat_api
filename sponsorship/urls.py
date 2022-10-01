@@ -18,6 +18,6 @@ urlpatterns = [
     path('detail/<int:pk>/', SponsorStudentAPIView.as_view(), name='detail'),
 
     path('dashboard/overall-statistics/', OverallStatistics.as_view(), name='dashboard-overall'),
-    path('dashboard/sponsors/', SponsorStatistics.as_view(), name='dashboard-sponsor'),
-    path('dashboard/student/', StudentStatistics.as_view(), name='dashboard-student'),
+    path('dashboard/sponsors/', SponsorStatistics.as_view(), name='dashboard-sponsors'),
+    path('dashboard/students/', StudentStatistics.as_view(), name='dashboard-students'),
 ]

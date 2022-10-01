@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # installed apps
     'rest_framework',
+    'django_filters',
 
     # local apps
     'users.apps.UsersConfig',
@@ -139,12 +140,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Django'ga o'zimiz yaratgan CustomUser modelidan foydalanishini aytamiz
 AUTH_USER_MODEL = 'users.CustomUser'
-
-
-
-
-
-
 
 
 # # Media fayllarni qayerga saqlashni ko'rsatamiz

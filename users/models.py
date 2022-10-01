@@ -71,6 +71,9 @@ class Sponsor(models.Model):
         default=TRANSFER
     )
 
+    class Meta:
+        ordering = ['-create_at']
+
     def __str__(self):
         return self.full_name
 
@@ -102,6 +105,9 @@ class Student(models.Model):
 
     create_at = models.DateTimeField(auto_now_add=True)
     received_money = models.DecimalField(max_digits=20, decimal_places=2, default=0)
+
+    class Meta:
+        ordering = ['-create_at']
 
     def __str__(self):
         return self.full_name
