@@ -12,11 +12,11 @@ Sponsor filters:
 * api/v1/users/sponsors/?total_money=  ➟  FILTER BY total_money (GET)
 * api/v1/users/sponsors/?create_at=  ➟  FILTER BY create_at (GET)
 
-<br>
+
 UNIVERSITY:
 * api/v1/users/university/  ➟  UNIVERSITY LIST, CREATE (GET, POST)
 
-<br>
+
 STUDENT:
 * api/v1/users/students/create/  ➟  STUDENT CREATE (POST)
 * api/v1/users/students/  ➟  STUDENTS LIST (GET)
@@ -27,7 +27,7 @@ Student filters:
 * api/v1/users/students/?student_type=  ➟  FILTER BY student_type (GET)
 * api/v1/users/students/?university=  ➟  FILTER BY university (GET)
 
-<br>
+
 SPONSOR_STUDENT:
 * api/v1/sponsorship/  ➟  STUDENT_SPONSORS LIST (GET)
 * api/v1/sponsorship/create/  ➟  STUDENT_SPONSORS CREATE (POST)
@@ -35,7 +35,7 @@ SPONSOR_STUDENT:
 SponsorStudent filters:
 * api/v1/users/students/?amount=  ➟  FILTER BY amount (GET)
 
-<br>
+
 DASHBOARD:
 * api/v1/sponsorship/dashboard/overall-statistics/  ➟  GIVEN RECIEVED MONEY STATISTICS (GET)
 * api/v1/sponsorship/dashboard/sponsors/  ➟  STUDENTS STATISTICS LIST (GET)
