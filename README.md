@@ -31,7 +31,8 @@ filters:
 SPONSOR_STUDENT:
 * api/v1/sponsorship/  ➟  STUDENT_SPONSORS LIST (GET)
 * api/v1/sponsorship/create/  ➟  STUDENT_SPONSORS CREATE (POST)
-* api/v1/sponsorship/<int:pk>/  ➟  STUDENT_SPONSORS DETAIL, UPDATE, DELETE (GET, PUT, PATCH, DELETE) <br>
+* api/v1/sponsorship/<int:pk>/  ➟  STUDENT_SPONSORS DETAIL, DELETE (GET, DELETE)
+* api/v1/sponsorship/<int:pk>/update/  ➟  STUDENT_SPONSORS UPDATE (PUT, PATCH) <br>
 filters:
 * api/v1/users/sponsorship/?amount=  ➟  FILTER BY amount (GET)
 
