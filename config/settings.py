@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # local apps
     'users.apps.UsersConfig',
+    'sponsorship.apps.SponsorshipConfig',
 
 ]
 
