@@ -5,7 +5,7 @@ Metsenat API Links:
 SPONSOR:
 * api/v1/users/sponsors/  ➟  SPONSORS LIST (GET)
 * api/v1/users/sponsor/register/  ➟  REGISTER SPONSOR (POST)
-* api/v1/users/sponsors/<int:pk>/  ➟  SPONSOR DETAIL, UPDATE, DELETE (GET, PUT, PATCH, DELETE)
+* api/v1/users/sponsors/<int:pk>/  ➟  SPONSOR DETAIL, UPDATE, DELETE (GET, PUT, PATCH, DELETE)<br>
 Sponsor filters:
 * api/v1/users/sponsors/?search=  ➟  SEARCH BY full_name, phone_number (GET)
 * api/v1/users/sponsors/?status=  ➟  FILTER BY status (GET)
