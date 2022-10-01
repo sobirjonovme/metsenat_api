@@ -14,7 +14,7 @@ filters:
 
 
 UNIVERSITY:
-* api/v1/users/university/  ➟  UNIVERSITY LIST, CREATE (GET, POST)
+* api/v1/users/universities/  ➟  UNIVERSITY LIST, CREATE (GET, POST)
 
 
 STUDENT:
