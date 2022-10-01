@@ -2,8 +2,10 @@
 from rest_framework.generics import (
     CreateAPIView,
     ListAPIView,
+    RetrieveDestroyAPIView,
+    RetrieveUpdateAPIView,
     RetrieveUpdateDestroyAPIView,
-    ListCreateAPIView
+    ListCreateAPIView,
 )
 from rest_framework import permissions
 
@@ -67,9 +69,17 @@ class StudentListAPIView(ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 
-# Student detail, update, delete
-class StudentDetailAPIView(RetrieveUpdateDestroyAPIView):
+# Student detail, delete
+class StudentDetailAPIView(RetrieveDestroyAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentDetailSerializer
+
+    permission_classes = [permissions.IsAuthenticated]
+
+
+# Student update
+class StudentUpdateAPIView(RetrieveUpdateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = CreateStudentSerializer
 
     permission_classes = [permissions.IsAuthenticated]
