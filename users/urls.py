@@ -23,9 +23,9 @@ urlpatterns = [
 
     path('universities/', UniversityListAPIView.as_view(), name='university-list'),
 
-    path('students/create', CreateStudentAPIView.as_view(), name='student-create'),
+    path('students/create/', CreateStudentAPIView.as_view(), name='student-create'),
     path('students/', StudentListAPIView.as_view(), name='student-list'),
     path('students/<int:pk>/', StudentDetailAPIView.as_view(), name='student-detail'),
-    path('students/<int:pk>/update', StudentUpdateAPIView.as_view(), name='student-update'),
+    path('students/<int:pk>/update/', StudentUpdateAPIView.as_view(), name='student-update'),
 
 ]

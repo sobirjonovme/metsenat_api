@@ -1,11 +1,11 @@
 from django.dispatch import receiver
-from django.db.models.signals import post_save, pre_delete
+from django.db.models.signals import post_save, pre_save, pre_delete
 
 from .models import SponsorStudent
 
 
 @receiver(post_save, sender=SponsorStudent)
-def sponsorstudent(sender, instance, created, **kwargs):
+def sponsorstudent_create(sender, instance, created, **kwargs):
     if created:
         sponsor = instance.sponsor
         sponsor.spent_money += instance.amount
@@ -15,22 +15,30 @@ def sponsorstudent(sender, instance, created, **kwargs):
         student.received_money += instance.amount
         student.save()
 
-    else:
-        sponsor = instance.sponsor
-        sponsorships = SponsorStudent.objects.filter(sponsor=sponsor)
-        money = 0
-        for i in range(len(sponsorships)):
-            money += sponsorships[i].amount
-        sponsor.spent_money = money
-        sponsor.save()
 
-        student = instance.student
-        sponsorships = SponsorStudent.objects.filter(student=student)
-        money = 0
-        for i in range(len(sponsorships)):
-            money += sponsorships[i].amount
-        student.received_money = money
-        student.save()
+@receiver(pre_save, sender=SponsorStudent)
+def sponsorstudent_update(sender, instance, **kwargs):
+    if instance.id is not None:
+        previous = SponsorStudent.objects.get(id=instance.id)
+        curr_sponsor = instance.sponsor
+        curr_student = instance.student
+
+        if previous.sponsor == curr_sponsor:
+            curr_sponsor.spent_money += instance.amount - previous.amount
+        else:
+            previous.sponsor.spent_money -= previous.amount
+            curr_sponsor.spent_money += instance.amount
+            previous.sponsor.save()
+
+        if previous.student == curr_student:
+            curr_student.received_money += instance.amount - previous.amount
+        else:
+            previous.student.received_money -= previous.amount
+            curr_student.received_money += instance.amount
+            previous.student.save()
+
+        curr_sponsor.save()
+        curr_student.save()
 
 
 @receiver(pre_delete, sender=SponsorStudent)
