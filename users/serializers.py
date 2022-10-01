@@ -3,7 +3,7 @@ from rest_framework import serializers
 from .models import Sponsor, University, Student
 
 
-class RegisterSponsorSerializer():
+class RegisterSponsorSerializer(serializers.ModelSerializer):
     # for non auth users
     class Meta:
         model = Sponsor
