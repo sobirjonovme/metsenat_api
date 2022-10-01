@@ -10,7 +10,7 @@ filters:
 * api/v1/users/sponsors/?search=  ➟  SEARCH BY full_name, phone_number (GET)
 * api/v1/users/sponsors/?status=  ➟  FILTER BY status (GET)
 * api/v1/users/sponsors/?total_money=  ➟  FILTER BY total_money (GET)
-* api/v1/users/sponsors/?create_at=  ➟  FILTER BY create_at (GET)
+* api/v1/users/sponsors/?create_at=  ➟  FILTER BY create_at (GET)<br>
 
 
 UNIVERSITY:
