@@ -39,8 +39,8 @@ class SponsorStudentAPIView(RetrieveUpdateDestroyAPIView):
 class SponsorStudentListAPIView(ListAPIView):
     queryset = SponsorStudent.objects.all().order_by('-id')
     serializer_class = SponsorStudentDetailSerializer
-
     permission_classes = [permissions.IsAuthenticated]
+
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['amount']
     pagination_class = CustomPagination

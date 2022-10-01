@@ -8,6 +8,7 @@ from rest_framework.generics import (
     ListCreateAPIView,
 )
 from rest_framework import permissions
+from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .serializers import (
@@ -35,10 +36,11 @@ class RegisterSponsorAPIView(CreateAPIView):
 class SponsorListAPIView(ListAPIView):
     queryset = Sponsor.objects.all()
     serializer_class = SponsorSerializer
-
     permission_classes = [permissions.IsAuthenticated]
-    filter_backends = [DjangoFilterBackend]
+
+    filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ['status', 'total_money', 'create_at']
+    search_fields = ['full_name', 'phone_number']
     pagination_class = CustomPagination
 
 
@@ -72,10 +74,11 @@ class CreateStudentAPIView(CreateAPIView):
 class StudentListAPIView(ListAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentDetailSerializer
-
     permission_classes = [permissions.IsAuthenticated]
-    filter_backends = [DjangoFilterBackend]
+
+    filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ['student_type', 'university']
+    search_fields = ['full_name', 'phone_number']
     pagination_class = CustomPagination
 
 
