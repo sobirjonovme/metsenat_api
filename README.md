@@ -4,7 +4,7 @@ Metsenat API Links:
 
 SPONSOR:
 * api/v1/users/sponsors/  ➟  SPONSORS LIST (GET)
-* api/v1/users/sponsor/register/  ➟  REGISTER SPONSOR (POST)
+* api/v1/users/sponsors/register/  ➟  REGISTER SPONSOR (POST)
 * api/v1/users/sponsors/<int:pk>/  ➟  SPONSOR DETAIL, UPDATE, DELETE (GET, PUT, PATCH, DELETE)<br>
 filters:
 * api/v1/users/sponsors/?search=  ➟  SEARCH BY full_name, phone_number (GET)
@@ -33,7 +33,7 @@ SPONSOR_STUDENT:
 * api/v1/sponsorship/create/  ➟  STUDENT_SPONSORS CREATE (POST)
 * api/v1/sponsorship/<int:pk>/  ➟  STUDENT_SPONSORS DETAIL, UPDATE, DELETE (GET, PUT, PATCH, DELETE) <br>
 filters:
-* api/v1/users/students/?amount=  ➟  FILTER BY amount (GET)
+* api/v1/users/sponsorship/?amount=  ➟  FILTER BY amount (GET)
 
 
 DASHBOARD:
