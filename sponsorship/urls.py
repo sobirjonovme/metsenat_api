@@ -13,9 +13,9 @@ from .views import (
 app_name = 'sponsorship'
 
 urlpatterns = [
+    path('', SponsorStudentListAPIView.as_view(), name='list'),
     path('create/', CreateSponsorStudentAPIView.as_view(), name='create'),
-    path('list/', SponsorStudentListAPIView.as_view(), name='list'),
-    path('detail/<int:pk>/', SponsorStudentAPIView.as_view(), name='detail'),
+    path('<int:pk>/', SponsorStudentAPIView.as_view(), name='detail'),
 
     path('dashboard/overall-statistics/', OverallStatistics.as_view(), name='dashboard-overall'),
     path('dashboard/sponsors/', SponsorStatistics.as_view(), name='dashboard-sponsors'),
