@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from .models import Sponsor, University, Student
+from sponsorship.models import SponsorStudent
 
 
 class RegisterSponsorSerializer(serializers.ModelSerializer):
@@ -29,6 +30,10 @@ class UniversitySerializer(serializers.ModelSerializer):
 class StudentSerializer(serializers.ModelSerializer):
     # for reading
     university = UniversitySerializer(read_only=True)
+    sponsorships_recieved = serializers.PrimaryKeyRelatedField(
+        many=True,
+        read_only=True
+    )
 
     # for creating
     university_id = serializers.IntegerField(write_only=True)
@@ -36,7 +41,7 @@ class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
         fields = ('id', 'full_name', 'phone_number', 'university', 'university_id', 'student_type',
-                  'tuition_fee', 'create_at', 'received_money')
+                  'tuition_fee', 'create_at', 'received_money', 'sponsorships_recieved')
 
         read_only_fields = ('received_money', 'create_at')
 
