@@ -34,7 +34,7 @@ SPONSOR_STUDENT:
 * api/v1/sponsorship/<int:pk>/  ➟  STUDENT_SPONSORS DETAIL, DELETE (GET, DELETE)
 * api/v1/sponsorship/<int:pk>/update/  ➟  STUDENT_SPONSORS UPDATE (PUT, PATCH) <br>
 filters:
-* api/v1/users/sponsorship/?amount=  ➟  FILTER BY amount (GET)
+* api/v1/sponsorship/?amount=  ➟  FILTER BY amount (GET)
 
 
 DASHBOARD:
