@@ -141,7 +141,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Django'ga o'zimiz yaratgan CustomUser modelidan foydalanishini aytamiz
 AUTH_USER_MODEL = 'users.CustomUser'
 
-
 # # Media fayllarni qayerga saqlashni ko'rsatamiz
 # MEDIA_ROOT = BASE_DIR / 'media-files'
 #
